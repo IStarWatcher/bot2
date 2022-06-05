@@ -18,11 +18,11 @@ def image(update, context):
 
 def remember_message(update, context):
     message = update.message.text
-    error_code = False
+    error_code = True
     messages = message.split(' ', 1)
-    if len(messages) != 1:
-        error_code = True
-        messages = messages[1]
+    if len(messages) != 2:
+        error_code = False
+        messages = "/start + msg"
     return error_code, messages
 
 def echo(update, context):
