@@ -18,6 +18,7 @@ def mem(mes, new_image):
     new_image.save("images/image1.jpg")
     
 def image(update, context):
+<<<<<<< HEAD
     global message_list
     global image
     str_file = update.message.photo[-1].file_id
@@ -31,6 +32,24 @@ def image(update, context):
         context.bot.send_photo(chat_id=id,photo=open('images\image1.jpg', 'rb'))
     except:
         context.bot.send_message(chat_id=update.effective_chat.id, text="вы забыли добавить текст к картинке")
+=======
+    context.bot.send_document(chat_id=update.effective_chat.id, document=update.message.document)
+
+def remember_message(update, context):
+    message = update.message.text
+    error_code = True
+    messages = message.split(' ', 1)
+    if len(messages) != 2:
+        error_code = False
+        messages = "/start + msg"
+    return error_code, messages
+
+def echo(update, context):
+    error_code, message = remember_message(update ,context)
+    if error_code:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="вы добавили текст для картинки")
+        return message
+>>>>>>> 9e7c99070e4323e6bb24d01eb11e1a8439807d0c
     else:
         message_list = []
         files = os.listdir("images")
