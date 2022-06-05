@@ -58,7 +58,7 @@ def text(update, context):
         image = 0
         
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text='введите текст для картинки')
+    context.bot.send_message(chat_id=update.effective_chat.id, text='отправь изображение и текст двумя сообщениями и получишь изображение с текстом')
 
 def main():
     updater = Updater(token=TOKEN, use_context=True)
